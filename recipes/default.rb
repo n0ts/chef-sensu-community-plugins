@@ -21,7 +21,6 @@ include_recipe "git"
 
 git "/opt/sensu-community-plugins" do
   repository "https://github.com/sensu/sensu-community-plugins.git"
-  reference "1860721b049d32397f4605bff93c049c049f9f7e"
   action :sync
 end
 
@@ -32,3 +31,8 @@ end
 link "#{node['sensu']['directory']}/handlers/sensu-community-plugins" do
     to "/opt/sensu-community-plugins/handlers"
 end
+
+sensu_gem "sensu-plugin" do
+  action :install
+end
+
